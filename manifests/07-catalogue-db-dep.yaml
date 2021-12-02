@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: catalogue-db
-        image: weaveworksdemos/catalogue-db:0.3.0
+        image: europe-west3-docker.pkg.dev/cnpe-blue/sockshop/catalogue-db:latest
         resources:
           requests:
             cpu: 100m
