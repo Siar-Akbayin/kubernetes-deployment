@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: queue-master-v1
+  name: queue-master
   labels:
     name: queue-master
     app: queue-master

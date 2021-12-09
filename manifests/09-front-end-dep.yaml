@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: front-end-v1
+  name: front-end
   labels:
     app: front-end
     version: v1

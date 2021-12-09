@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: orders-db-v1
+  name: orders-db
   labels:
     name: orders-db
     app: orders-db

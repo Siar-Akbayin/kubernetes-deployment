@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: session-db-v1
+  name: session-db
   labels:
     name: session-db
     app: session-db

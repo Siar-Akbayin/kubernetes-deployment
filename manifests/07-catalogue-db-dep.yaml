@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: catalogue-db-v1
+  name: catalogue-db
   labels:
     name: catalogue-db
     app: catalogue-db

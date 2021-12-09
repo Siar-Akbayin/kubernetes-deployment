@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-v1
+  name: user
   labels:
     name: user
     app: user

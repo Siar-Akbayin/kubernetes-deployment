@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: shipping-v1
+  name: shipping
   labels:
     name: shipping
     app: shipping

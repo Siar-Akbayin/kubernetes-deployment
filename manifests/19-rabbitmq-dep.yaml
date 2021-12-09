@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rabbitmq-v1
+  name: rabbitmq
   labels:
     name: rabbitmq
     app: rabbitmq
