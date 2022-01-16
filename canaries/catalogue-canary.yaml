@@ -1,0 +1,47 @@
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: catalogue
+  namespace: sock-shop
+spec:
+  # deployment reference
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: catalogue
+  # the maximum time in seconds for the canary deployment
+  # to make progress before it is rollback (default 600s)
+  progressDeadlineSeconds: 60
+  # HPA reference (optional)
+  autoscalerRef:
+    apiVersion: autoscaling/v2beta2
+    kind: HorizontalPodAutoscaler
+    name: catalogue
+  service:
+    # container port
+    port: 8080
+  analysis:
+    # schedule interval (default 60s)
+    interval: 40s
+    # max number of failed metric checks before rollback
+    threshold: 10
+    # precentage before complete rollout
+    maxWeight: 80
+    # 10% steps
+    stepWeight: 10
+    # Istio Prometheus checks
+    metrics:
+      - name: error-rate
+        templateRef:
+          name: error-rate
+          namespace: istio-system
+        thresholdRange:
+          max: 1
+        interval: 30s
+      - name: latency
+        templateRef:
+          name: latency
+          namespace: istio-system
+        thresholdRange:
+          max: 500
+        interval: 30s
