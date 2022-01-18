@@ -4,7 +4,7 @@ resources:
   - 05-catalogue-dep.yaml
   - 06-catalogue-svc.yaml
   - catalogue-canary.yaml
-  - catalogue-hsc.yaml
+  - catalogue-hpa.yaml
 images:
   - name: catalogue
     newName: catalogue
