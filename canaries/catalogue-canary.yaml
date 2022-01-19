@@ -29,14 +29,22 @@ spec:
     maxWeight: 80
     # 10% steps
     stepWeight: 10
+    # promotion increment step (default 100)
+    stepWeightPromotion: 100
     # Built in Flagger metrics
     metrics:
       - name: request-success-rate
-        interval: 1m
         templateRef:
+          name: request-success-rate
+          namespace: istio-system
+        interval: 1m
         thresholdRange:
           min: 99
       - name: request-duration
+        templateRef:
+          name: request-duration
+          namespace: istio-system
         interval: 1m
         thresholdRange:
           max: 1000
+  skipAnalysis: false
