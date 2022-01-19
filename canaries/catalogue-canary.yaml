@@ -29,19 +29,14 @@ spec:
     maxWeight: 80
     # 10% steps
     stepWeight: 10
-    # Istio Prometheus checks
+    # Built in Flagger metrics
     metrics:
-      - name: error-rate
+      - name: request-success-rate
+        interval: 1m
         templateRef:
-          name: error-rate
-          namespace: istio-system
         thresholdRange:
-          max: 1
-        interval: 30s
-      - name: latency
-        templateRef:
-          name: latency
-          namespace: istio-system
+          min: 99
+      - name: request-duration
+        interval: 1m
         thresholdRange:
-          max: 500
-        interval: 30s
+          max: 1000
