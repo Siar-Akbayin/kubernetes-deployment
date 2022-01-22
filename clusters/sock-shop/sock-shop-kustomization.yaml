@@ -4,7 +4,7 @@ metadata:
   name: kubernetes-deployment
   namespace: flux-system
 spec:
-  interval: 10m0s
+  interval: 1h
   sourceRef:
     kind: GitRepository
     name: kubernetes-deployment
