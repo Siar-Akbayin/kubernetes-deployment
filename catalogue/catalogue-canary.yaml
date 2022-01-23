@@ -11,7 +11,7 @@ spec:
     name: catalogue
   # the maximum time in seconds for the canary deployment
   # to make progress before it is rollback (default 600s)
-  progressDeadlineSeconds: 60
+  progressDeadlineSeconds: 600
   # HPA reference (optional)
   autoscalerRef:
     apiVersion: autoscaling/v2beta2
@@ -20,6 +20,8 @@ spec:
   service:
     # container port
     port: 8080
+    gateways:
+      - istio-system/public-gateway
   analysis:
     # schedule interval (default 60s)
     interval: 40s
@@ -31,7 +33,7 @@ spec:
     stepWeight: 10
     # promotion increment step (default 100)
     stepWeightPromotion: 100
-    # Built in Flagger metrics
+     Built in Flagger metrics
     metrics:
       - name: request-success-rate
         templateRef:
