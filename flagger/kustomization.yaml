@@ -1,0 +1,4 @@
+namespace: test
+resources:
+  - service.yaml
+  - loadtester.yaml
