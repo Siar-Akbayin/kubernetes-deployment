@@ -26,7 +26,7 @@ spec:
     # schedule interval (default 60s)
     interval: 30s
     # max number of failed metric checks before rollback
-    threshold: 10
+    threshold: 25
     # precentage before complete rollout
     maxWeight: 70
     # 10% steps
