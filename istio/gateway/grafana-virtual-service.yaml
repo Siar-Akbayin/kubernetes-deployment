@@ -7,8 +7,8 @@ spec:
   hosts:
     - "*"
   gateways:
-    - public-gateway.istio-system.svc.cluster.local
+    - public-gateway-grafana.istio-system.svc.cluster.local
   http:
-    - route:
-        - destination:
-            host: flagger-grafana
+  - route:
+    - destination:
+        host: flagger-grafana

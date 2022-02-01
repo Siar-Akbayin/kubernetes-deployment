@@ -1,8 +1,8 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: public-gateway-sock-shop
-  namespace: sock-shop
+  name: public-gateway-grafana
+  namespace: istio-system
 spec:
   selector:
     istio: ingressgateway

@@ -17,11 +17,18 @@ spec:
     apiVersion: autoscaling/v2beta2
     kind: HorizontalPodAutoscaler
     name: front-end
-  service:
-    # container port
-    port: 8080
-    gateways:
-      - istio-system/public-gateway
+#  service:
+#    name: front-end
+#    port: 80
+#    targetPort: 8079
+#    portName: http #grpc
+#    gateways:
+#      - sock-shop/public-gateway-sock-shop
+#    trafficPolicy:
+#      tls:
+#        # use ISTIO_MUTUAL when mTLS is enabled
+#        mode: DISABLE
+
   analysis:
     # schedule interval (default 60s)
     interval: 30s
@@ -41,12 +48,12 @@ spec:
     #            type: confirm-rollout
     #            url: http://flagger-loadtester.test/gate/halt
 
-    #      - name: load-test
-    #        url: http://34.159.190.137/
-    #        timeout: 5s
-    #        metadata:
-    #          type: cmd
-    #        cmd: ["-c", "while true; do locust --host http://34.159.153.79/ -f /config/locustfile.py --clients 5 --hatch-rate 5 --num-request 100 --no-web; done"]
+          - name: load-test
+            url: http://34.159.190.137//
+            timeout: 5s
+            metadata:
+              type: cmd
+            cmd: ["-c", "while true; do locust --host http://34.159.190.137/ -f /config/locustfile.py --clients 5 --hatch-rate 5 --num-request 100 --no-web; done"]
 
     metrics:
       - name: request-success-rate
