@@ -1,16 +1,16 @@
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: front-end
-  namespace: sock-shop
-spec:
-  hosts:
-    - "*"
-  gateways:
-    - sock-shop/public-gateway-sock-shop
-  http:
-    - route:
-        - destination:
-            host: front-end
-            port:
-              number: 80
+#apiVersion: networking.istio.io/v1alpha3
+#kind: VirtualService
+#metadata:
+#  name: front-end
+#  namespace: sock-shop
+#spec:
+#  hosts:
+#    - "*"
+#  gateways:
+#    - sock-shop/public-gateway-sock-shop
+#  http:
+#    - route:
+#        - destination:
+#            host: front-end
+#            port:
+#              number: 80
