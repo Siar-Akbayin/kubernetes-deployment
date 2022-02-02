@@ -4,9 +4,6 @@ metadata:
   name: grafana
   namespace: istio-system
 spec:
-  auth:
-    - basic:
-        enabled=false
   hosts:
     - "*"
   gateways:
