@@ -7,7 +7,7 @@ spec:
   hosts:
     - "*"
   gateways:
-    - public-gateway-grafana.istio-system.svc.cluster.local
+    - istio-system/public-gateway-grafana
   http:
   - route:
     - destination:
