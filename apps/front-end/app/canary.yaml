@@ -62,42 +62,41 @@ spec:
 #          cookie:
 #            regex: "^(.*?;)?(type=insider)(;.*)?$"
     # Istio Prometheus checks
-#    metrics:
-#      - name: request-success-rate
-#        interval: 1m
-#        # minimum req success rate (non 5xx responses)
-#        # percentage (0-100)
-#        thresholdRange:
-#          min: 99
-#      - name: request-duration
-#        interval: 1m
-#        # maximum req duration P99
-#        # milliseconds
-#        thresholdRange:
-#          max: 500
-#      - name: error-rate
-#        templateRef:
-#          name: error-rate
-#          namespace: istio-system
-#        thresholdRange:
-#          max: 1
-#        interval: 30s
-#      - name: latency
-#        templateRef:
-#          name: latency
-#          namespace: istio-system
-#        thresholdRange:
-#          max: 500
-#        interval: 30s
-    # tests
-#    webhooks:
-#      - name: conformance-test
-#        type: pre-rollout
-#        timeout: 15s
-#        url: http://flagger-loadtester.sock-shop/
-#        metadata:
-#          type: bash
-#          cmd: "curl -sd 'test' http://frontend-canary.sock-shop:9898/token | grep token"
+    metrics:
+      - name: request-success-rate
+        interval: 1m
+        # minimum req success rate (non 5xx responses)
+        # percentage (0-100)
+        thresholdRange:
+          min: 99
+      - name: request-duration
+        interval: 1m
+        # maximum req duration P99
+        # milliseconds
+        thresholdRange:
+          max: 500
+      - name: error-rate
+        templateRef:
+          name: error-rate
+          namespace: istio-system
+        thresholdRange:
+          max: 1
+        interval: 30s
+      - name: latency
+        templateRef:
+          name: latency
+          namespace: istio-system
+        thresholdRange:
+          max: 500
+        interval: 30s
+    webhooks:
+      - name: conformance-test
+        type: pre-rollout
+        timeout: 15s
+        url: http://flagger-loadtester.sock-shop/
+        metadata:
+          type: bash
+          cmd: "curl -sd 'test' http://frontend-canary.sock-shop:8079/token | grep token"
       - name: load-test
         type: rollout
         timeout: 15s
