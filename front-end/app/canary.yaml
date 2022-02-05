@@ -25,7 +25,8 @@ spec:
       - public-gateway.istio-system.svc.cluster.local
     # Istio virtual service host names (optional)
     hosts:
-      - frontend.transparent-sock-shop.de
+#      - frontend.transparent-sock-shop.de
+      - "*"
     match:
       - uri:
           prefix: /

@@ -4,22 +4,16 @@ kind: Deployment
 metadata:
   name: catalogue
   labels:
-    name: catalogue
     app: catalogue
-    version: v1
   namespace: sock-shop
 spec:
   selector:
     matchLabels:
-      name: catalogue
       app: catalogue
-      version: v1
   template:
     metadata:
       labels:
-        name: catalogue
         app: catalogue
-        version: v1
     spec:
       containers:
       - name: catalogue
