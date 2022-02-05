@@ -34,7 +34,7 @@ spec:
               cpu: 100m
               memory: 300Mi
           ports:
-            - containerPort: 80
+            - containerPort: 8079
               name: http
               protocol: TCP
           env:

@@ -19,7 +19,7 @@ spec:
     name: catalogue
   service:
     # container port
-    port: 8080
+    port: 80
     trafficPolicy:
       tls:
         # use ISTIO_MUTUAL when mTLS is enabled

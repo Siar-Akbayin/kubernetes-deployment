@@ -23,10 +23,10 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 8079
           command:
             - ./loadtester
-            - -port=8080
+            - -port=8079
             - -log-level=info
             - -timeout=1h
           livenessProbe:
