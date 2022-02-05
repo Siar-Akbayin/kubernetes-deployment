@@ -1,6 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - 09-front-end-dep.yaml
-  - front-end-canary.yml
-  - front-end-hpa.yaml
+  - canary.yaml
+  - deployment.yaml
+  - hpa.yaml

@@ -11,26 +11,26 @@ spec:
     name: front-end
   # the maximum time in seconds for the canary deployment
   # to make progress before it is rollback (default 600s)
-  progressDeadlineSeconds: 600
+  progressDeadlineSeconds: 60
   # HPA reference (optional)
   autoscalerRef:
-    apiVersion: autoscaling/v2beta2
+    apiVersion: autoscaling/v2beta1
     kind: HorizontalPodAutoscaler
     name: front-end
   service:
-    name: front-end
-    port: 80
-    targetPort: 8079
-    portName: http #grpc
+    # container port
+    port: 9898
+    # Istio gateways (optional)
     gateways:
-      - istio-system/public-gateway-grafana
+      - istio-system/public-gateway
+    # Istio virtual service host names (optional)
     hosts:
-    - "*"
+      - "*"
+#      - "transparent-sock-shop.de"
     trafficPolicy:
-      tls:
+#      tls:
         # use ISTIO_MUTUAL when mTLS is enabled
-        mode: DISABLE
-
+#       mode: DISABLE
   analysis:
     # schedule interval (default 60s)
     interval: 30s
@@ -42,33 +42,29 @@ spec:
     stepWeight: 10
     # promotion increment step (default 100)
     stepWeightPromotion: 100
-
-
- #   webhooks:
-    #gate waits for status code 200 from an url. If it gets 403, rollout
-    #will be blocked (could be used by the controller in the dashboard)
-    #      - name: "gate"
-    #            type: confirm-rollout
-    #            url: http://flagger-loadtester.test/gate/halt
-
-#          - name: load-test
-#            url: http://34.159.190.137//
-#            timeout: 5s
-#            metadata:
-#              type: cmd
-#            cmd: ["-c", "while true; do locust --host http://34.159.190.137/ -f /config/locustfile.py --clients 5 --hatch-rate 5 --num-request 100 --no-web; done"]
-    #Built in Flagger metrics
-    metrics:
-      - name: istio_requests_total
-        thresholdRange:
-          min: 99
-        interval: 1m
-      - name: istio_request_duration_seconds_bucket
-        thresholdRange:
-          max: 500
-        interval: 30s
+    # canary match condition
+#    match:
+#      - headers:
+#          user-agent:
+#            regex: ".*Firefox.*"
+#            #regex: "^(?!.*(?:Chrome|Edge)).*Safari"
+#      - headers:
+#          cookie:
+#            regex: "^(.*?;)?(type=insider)(;.*)?$"
     # Istio Prometheus checks
 #    metrics:
+#      - name: request-success-rate
+#        interval: 1m
+#        # minimum req success rate (non 5xx responses)
+#        # percentage (0-100)
+#        thresholdRange:
+#          min: 99
+#      - name: request-duration
+#        interval: 1m
+#        # maximum req duration P99
+#        # milliseconds
+#        thresholdRange:
+#          max: 500
 #      - name: error-rate
 #        templateRef:
 #          name: error-rate
@@ -83,19 +79,18 @@ spec:
 #        thresholdRange:
 #          max: 500
 #        interval: 30s
-
- #   webhooks:
-#      - name: acceptance-test
+    # tests
+#    webhooks:
+#      - name: conformance-test
 #        type: pre-rollout
+#        timeout: 15s
 #        url: http://flagger-loadtester.sock-shop/
-#        timeout: 30s
 #        metadata:
 #          type: bash
 #          cmd: "curl -sd 'test' http://front-end-canary.sock-shop:9898/token | grep token"
 #      - name: load-test
+#        type: rollout
+#        timeout: 15s
 #        url: http://flagger-loadtester.sock-shop/
-#        timeout: 5s
 #        metadata:
-#          cmd: "hey -z 1m -q 10 -c 2 http://front-end.sock-shop:8079/"
-
-  skipAnalysis: false
+#          cmd: "hey -z 1m -q 10 -c 2 -H 'Cookie: type=insider' http://front-end.sock-shop:9898/"
