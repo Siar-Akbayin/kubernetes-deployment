@@ -1,14 +1,14 @@
 apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
-  name: front-end
+  name: frontend
   namespace: sock-shop
 spec:
   # deployment reference
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: front-end
+    name: frontend
   # the maximum time in seconds for the canary deployment
   # to make progress before it is rollback (default 600s)
   progressDeadlineSeconds: 60
@@ -16,16 +16,21 @@ spec:
   autoscalerRef:
     apiVersion: autoscaling/v2beta1
     kind: HorizontalPodAutoscaler
-    name: front-end
+    name: frontend
   service:
     # container port
     port: 80
     # Istio gateways (optional)
     gateways:
-      - istio-system/public-gateway
+      - public-gateway.istio-system.svc.cluster.local
     # Istio virtual service host names (optional)
     hosts:
-      - front-end.transparent-sock-shop.de
+      - frontend.transparent-sock-shop.de
+    match:
+      - uri:
+          prefix: /
+    rewrite:
+      uri: /
     trafficPolicy:
       tls:
         # use ISTIO_MUTUAL when mTLS is enabled
@@ -87,10 +92,10 @@ spec:
 #        url: http://flagger-loadtester.sock-shop/
 #        metadata:
 #          type: bash
-#          cmd: "curl -sd 'test' http://front-end-canary.sock-shop:9898/token | grep token"
+#          cmd: "curl -sd 'test' http://frontend-canary.sock-shop:9898/token | grep token"
 #      - name: load-test
 #        type: rollout
 #        timeout: 15s
 #        url: http://flagger-loadtester.sock-shop/
 #        metadata:
-#          cmd: "hey -z 1m -q 10 -c 2 -H 'Cookie: type=insider' http://front-end.sock-shop:9898/"
+#          cmd: "hey -z 1m -q 10 -c 2 -H 'Cookie: type=insider' http://frontend.sock-shop:9898/"

@@ -12,8 +12,8 @@ spec:
         name: http
         protocol: HTTP
       hosts:
-#        - "transparent-sock-shop.de"
-        - front-end.transparent-sock-shop.de
+        - "*"
+#        - frontend.transparent-sock-shop.de
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -24,7 +24,8 @@ spec:
   hosts:
     - "*"
   gateways:
-    - istio-system/public-gateway
+    - - public-gateway.istio-system.svc.cluster.local
+
   http:
     - route:
         - destination:
