@@ -20,8 +20,10 @@ spec:
   service:
     # container port
     port: 8080
-    gateways:
-      - istio-system/public-gateway
+    trafficPolicy:
+      tls:
+        # use ISTIO_MUTUAL when mTLS is enabled
+        mode: DISABLE
   analysis:
     # schedule interval (default 60s)
     interval: 30s
