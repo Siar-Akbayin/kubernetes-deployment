@@ -90,13 +90,13 @@ spec:
           max: 500
         interval: 30s
     webhooks:
-      - name: conformance-test
-        type: pre-rollout
-        timeout: 15s
-        url: http://flagger-loadtester.sock-shop/
-        metadata:
-          type: bash
-          cmd: "curl -sd 'test' http://frontend-canary.sock-shop:8079/token | grep token"
+#      - name: conformance-test
+#        type: pre-rollout
+#        timeout: 15s
+#        url: http://flagger-loadtester.sock-shop/
+#        metadata:
+#          type: bash
+#          cmd: "curl -sd 'test' http://frontend-canary.sock-shop:8079/token | grep token"
       - name: load-test
         type: rollout
         timeout: 15s
