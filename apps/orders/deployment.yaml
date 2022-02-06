@@ -2,38 +2,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: carts
+  name: orders
   labels:
-    name: carts
-    app: carts
-    version: v1
+    name: orders
+    app: orders
   namespace: sock-shop
 spec:
   selector:
     matchLabels:
-      name: carts
-      app: carts
-      version: v1
+      name: orders
+      app: orders
   template:
     metadata:
       labels:
-        name: carts
-        app: carts
-        version: v1
+        name: orders
+        app: orders
     spec:
       containers:
-      - name: carts
-        image: europe-west3-docker.pkg.dev/cnpe-blue/sockshop/carts:1.0.0
+      - name: orders
+        image: europe-west3-docker.pkg.dev/cnpe-blue/sockshop/orders:1.0.1
         env:
          - name: JAVA_OPTS
            value: -Xms64m -Xmx128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom -Dspring.zipkin.enabled=false
         resources:
           limits:
-            cpu: 300m
+            cpu: 500m
             memory: 500Mi
           requests:
             cpu: 100m
-            memory: 200Mi
+            memory: 300Mi
         ports:
         - containerPort: 80
         securityContext:
@@ -45,18 +42,6 @@ spec:
             add:
               - NET_BIND_SERVICE
           readOnlyRootFilesystem: true
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 80
-          initialDelaySeconds: 300
-          periodSeconds: 3
-        readinessProbe:
-            httpGet:
-              path: /health
-              port: 80
-            initialDelaySeconds: 180
-            periodSeconds: 3
         volumeMounts:
         - mountPath: /tmp
           name: tmp-volume
