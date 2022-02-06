@@ -10,7 +10,9 @@ spec:
     name: orders
 
   minReplicas: 1
+
   maxReplicas: 3
+
 
   metrics:
     - type: Resource
