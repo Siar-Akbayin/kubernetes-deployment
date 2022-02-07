@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: shipping
-        image: europe-west3-docker.pkg.dev/cnpe-blue/sockshop/shipping:1.0.2
+        image: europe-west3-docker.pkg.dev/cnpe-blue/sockshop/shipping:latest
         env:
          - name: ZIPKIN
            value: zipkin.jaeger.svc.cluster.local
