@@ -1,0 +1,9 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: frontend
+  namespace: flux-system
+spec:
+  image: europe-west3-docker.pkg.dev/cnpe-blue/sockshop/front-end
+  interval: 1m0s
+---
