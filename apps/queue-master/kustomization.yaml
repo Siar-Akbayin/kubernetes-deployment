@@ -4,7 +4,3 @@ resources:
   - deployment.yaml
   - canary.yaml
   - hpa.yaml
-images:
-  - name: queue-master
-    newName: queue-master
-    newTag: 1.0.0

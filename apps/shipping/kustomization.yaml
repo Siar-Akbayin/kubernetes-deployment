@@ -4,7 +4,3 @@ resources:
   - deployment.yaml
   - canary.yaml
   - hpa.yaml
-images:
-  - name: shipping
-    newName: shipping
-    newTag: 1.0.0

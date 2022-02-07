@@ -4,7 +4,3 @@ resources:
   - deployment.yaml
   - canary.yaml
   - hpa.yaml
-images:
-  - name: orders
-    newName: orders
-    newTag: 1.0.0
