@@ -33,32 +33,27 @@ spec:
     # promotion increment step (default 100)
     stepWeightPromotion: 100
     #Built in Flagger metrics
-#    webhooks:
-      #gate waits for status code 200 from an url. If it gets 403, rollout
-      #will be blocked (could be used by the controller in the dashboard)
-#      - name: "gate"
-#            type: confirm-rollout
-#            url: http://flagger-loadtester.test/gate/halt
-
-#      - name: load-test
-#        url: http://34.159.190.137/
-#        timeout: 5s
-#        metadata:
-#          type: cmd
-#        cmd: ["-c", "while true; do locust --host http://34.159.153.79/ -f /config/locustfile.py --clients 5 --hatch-rate 5 --num-request 100 --no-web; done"]
-
     metrics:
-#      - name: request-success-rate
-#        templateRef:
-#          name: request-success-rate
-#          namespace: istio-system
-#        interval: 1m
-#        thresholdRange:
-#          min: 90
+      - name: request-success-rate
+        interval: 1m
+        thresholdRange:
+          min: 90
       - name: request-duration
-          interval: 1m
-          # maximum req duration P99
-          # milliseconds
-          thresholdRange:
-            max: 1000
-  skipAnalysis: false
+        interval: 1m
+        thresholdRange:
+          max: 1000
+      - name: error-rate
+        templateRef:
+          name: error-rate
+          namespace: istio-system
+        thresholdRange:
+          max: 1
+        interval: 30s
+      - name: latency
+        templateRef:
+          name: latency
+          namespace: istio-system
+        thresholdRange:
+          max: 500
+        interval: 30s
+
