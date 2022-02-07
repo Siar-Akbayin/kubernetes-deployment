@@ -18,10 +18,10 @@ spec:
     kind: HorizontalPodAutoscaler
     name: queue-master
   service:
+    name: queue-master
     # container port
     port: 80
-    gateways:
-      - istio-system/public-gateway
+    targetPort: 80
   analysis:
     # schedule interval (default 60s)
     interval: 30s
