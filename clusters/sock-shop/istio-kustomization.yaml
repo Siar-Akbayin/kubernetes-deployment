@@ -7,7 +7,7 @@ spec:
   interval: 30m0s
   sourceRef:
     kind: GitRepository
-    name: kubernetes-depoyment
+    name: flux-system
   path: ./istio/operator
   prune: true
   targetNamespace: istio-operator
@@ -23,7 +23,7 @@ spec:
   interval: 30m0s
   sourceRef:
     kind: GitRepository
-    name: kubernetes-deployment
+    name: flux-system
   path: ./istio/system
   prune: true
   targetNamespace: istio-system
@@ -39,7 +39,7 @@ spec:
   interval: 30m0s
   sourceRef:
     kind: GitRepository
-    name: kubernetes-deployment
+    name: flux-system
   path: ./istio/gateway
   prune: true
   targetNamespace: istio-system
