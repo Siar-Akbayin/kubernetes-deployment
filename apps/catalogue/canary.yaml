@@ -52,7 +52,7 @@ spec:
 #          type: cmd
 #        cmd: ["-c", "while true; do locust --host http://34.159.153.79/ -f /config/locustfile.py --clients 5 --hatch-rate 5 --num-request 100 --no-web; done"]
 
-    metrics:
+#    metrics:
 #      - name: request-success-rate
 #        templateRef:
 #          name: request-success-rate
@@ -60,11 +60,11 @@ spec:
 #        interval: 1m
 #        thresholdRange:
 #          min: 90
-      - name: request-duration
-        templateRef:
-          name: request-duration
-          namespace: istio-system
-        interval: 1m
-        thresholdRange:
-          max: 5000
+#      - name: request-duration
+#        templateRef:
+#          name: request-duration
+#          namespace: istio-system
+#        interval: 1m
+#        thresholdRange:
+#          max: 5000
   skipAnalysis: false

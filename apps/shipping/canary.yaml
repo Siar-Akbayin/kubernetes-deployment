@@ -33,27 +33,27 @@ spec:
     # promotion increment step (default 100)
     stepWeightPromotion: 100
     #Built in Flagger metrics
-    metrics:
-      - name: request-success-rate
-        interval: 1m
-        thresholdRange:
-          min: 90
-      - name: request-duration
-        interval: 1m
-        thresholdRange:
-          max: 1000
-      - name: error-rate
-        templateRef:
-          name: error-rate
-          namespace: istio-system
-        thresholdRange:
-          max: 1
-        interval: 30s
-      - name: latency
-        templateRef:
-          name: latency
-          namespace: istio-system
-        thresholdRange:
-          max: 500
-        interval: 30s
+#    metrics:
+#      - name: request-success-rate
+#        interval: 1m
+#        thresholdRange:
+#          min: 90
+#      - name: request-duration
+#        interval: 1m
+#        thresholdRange:
+#          max: 1000
+#      - name: error-rate
+#        templateRef:
+#          name: error-rate
+#          namespace: istio-system
+#        thresholdRange:
+#          max: 1
+#        interval: 30s
+#      - name: latency
+#        templateRef:
+#          name: latency
+#          namespace: istio-system
+#        thresholdRange:
+#          max: 500
+#        interval: 30s
 

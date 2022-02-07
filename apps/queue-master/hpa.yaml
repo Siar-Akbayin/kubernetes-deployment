@@ -10,7 +10,7 @@ spec:
     name: queue-master
 
   minReplicas: 1
-  maxReplicas: 4
+  maxReplicas: 8
 
   metrics:
     - type: Resource
