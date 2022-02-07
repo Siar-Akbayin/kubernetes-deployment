@@ -28,11 +28,6 @@ spec:
     hosts:
  #     - frontend.transparent-sock-shop.de
       - "*"
-    match:
-      - uri:
-          prefix: /
-    rewrite:
-      uri: /
     trafficPolicy:
       tls:
         # use ISTIO_MUTUAL when mTLS is enabled

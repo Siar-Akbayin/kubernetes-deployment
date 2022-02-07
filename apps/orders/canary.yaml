@@ -36,19 +36,19 @@ spec:
     # promotion increment step (default 100)
     stepWeightPromotion: 100
     #Built in Flagger metrics
-    metrics:
-      - name: request-success-rate
-        templateRef:
-          name: request-success-rate
-          namespace: istio-system
-        interval: 1m
-        thresholdRange:
-          min: 90
-      - name: request-duration
-        templateRef:
-          name: request-duration
-          namespace: istio-system
-        interval: 1m
-        thresholdRange:
-          max: 1000
-  skipAnalysis: true #svc does not get traffic since other services like carts are not available
+#    metrics:
+#      - name: request-success-rate
+#        templateRef:
+#          name: request-success-rate
+#          namespace: istio-system
+#        interval: 1m
+#        thresholdRange:
+#          min: 90
+#      - name: request-duration
+#        templateRef:
+#          name: request-duration
+#          namespace: istio-system
+#        interval: 1m
+#        thresholdRange:
+#          max: 1000
+  skipAnalysis: false #svc does not get traffic since other services like carts are not available

@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: europe-west3-docker.pkg.dev/cnpe-blue/sockshop/front-end:1.0.0
+          image: europe-west3-docker.pkg.dev/cnpe-blue/sockshop/front-end:latest
           imagePullPolicy: IfNotPresent
           resources:
             limits:
