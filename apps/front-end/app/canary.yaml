@@ -97,7 +97,7 @@ spec:
 #        metadata:
 #          type: bash
 #          cmd: "curl -sd 'test' http://frontend-canary.sock-shop:8079/token | grep token"
-      - name: load-test
+      - name: flagger-loadtester
         type: rollout
         timeout: 15s
         url: http://transparent-sock-shop.de/

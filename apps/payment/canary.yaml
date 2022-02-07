@@ -39,7 +39,7 @@ spec:
 #            type: confirm-rollout
 #            url: http://flagger-loadtester.test/gate/halt
 
-#      - name: load-test
+#      - name: flagger-loadtester
 #        url: http://34.159.190.137/
 #        timeout: 5s
 #        metadata:
