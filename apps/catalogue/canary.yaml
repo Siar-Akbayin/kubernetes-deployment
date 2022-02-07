@@ -18,8 +18,10 @@ spec:
     kind: HorizontalPodAutoscaler
     name: catalogue
   service:
+    name: catalogue
     # container port
-    port: 80
+    port: 8080
+    targetPort: 8080
     trafficPolicy:
       tls:
         # use ISTIO_MUTUAL when mTLS is enabled
@@ -28,7 +30,7 @@ spec:
     # schedule interval (default 60s)
     interval: 30s
     # max number of failed metric checks before rollback
-    threshold: 10
+    threshold: 25
     # precentage before complete rollout
     maxWeight: 70
     # 10% steps
@@ -51,18 +53,18 @@ spec:
 #        cmd: ["-c", "while true; do locust --host http://34.159.153.79/ -f /config/locustfile.py --clients 5 --hatch-rate 5 --num-request 100 --no-web; done"]
 
     metrics:
-#      - name: request-success-rate
-#        templateRef:
-#          name: request-success-rate
-#          namespace: istio-system
-#        interval: 1m
-#        thresholdRange:
-#          min: 90
+      - name: request-success-rate
+        templateRef:
+          name: request-success-rate
+          namespace: istio-system
+        interval: 1m
+        thresholdRange:
+          min: 90
       - name: request-duration
         templateRef:
           name: request-duration
           namespace: istio-system
         interval: 1m
         thresholdRange:
-          max: 1000
+          max: 5000
   skipAnalysis: false
