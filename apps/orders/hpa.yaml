@@ -10,7 +10,6 @@ spec:
     name: orders
 
   minReplicas: 1
-
   maxReplicas: 3
 
 

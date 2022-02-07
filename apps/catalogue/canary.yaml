@@ -20,7 +20,7 @@ spec:
   service:
     name: catalogue
     # container port
-    port: 8080
+    port: 80
     targetPort: 8080
     trafficPolicy:
       tls:
@@ -53,13 +53,13 @@ spec:
 #        cmd: ["-c", "while true; do locust --host http://34.159.153.79/ -f /config/locustfile.py --clients 5 --hatch-rate 5 --num-request 100 --no-web; done"]
 
     metrics:
-      - name: request-success-rate
-        templateRef:
-          name: request-success-rate
-          namespace: istio-system
-        interval: 1m
-        thresholdRange:
-          min: 90
+#      - name: request-success-rate
+#        templateRef:
+#          name: request-success-rate
+#          namespace: istio-system
+#        interval: 1m
+#        thresholdRange:
+#          min: 90
       - name: request-duration
         templateRef:
           name: request-duration

@@ -20,8 +20,6 @@ spec:
   service:
     # container port
     port: 80
-    gateways:
-      - istio-system/public-gateway
   analysis:
     # schedule interval (default 60s)
     interval: 30s
@@ -63,4 +61,4 @@ spec:
         interval: 1m
         thresholdRange:
           max: 1000
-  skipAnalysis: false
+  skipAnalysis: true #svc does not get traffic since other services like carts are not available
