@@ -1,14 +1,14 @@
 apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
-  name: carts
+  name: payment
   namespace: sock-shop
 spec:
   # deployment reference
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: carts
+    name: payment
   # the maximum time in seconds for the canary deployment
   # to make progress before it is rollback (default 600s)
   progressDeadlineSeconds: 600
@@ -16,21 +16,19 @@ spec:
   autoscalerRef:
     apiVersion: autoscaling/v2beta2
     kind: HorizontalPodAutoscaler
-    name: carts
+    name: payment
   service:
     # container port
     port: 80
-    trafficPolicy:
-      tls:
-        # use ISTIO_MUTUAL when mTLS is enabled
-        mode: DISABLE
+    gateways:
+      - istio-system/public-gateway
   analysis:
     # schedule interval (default 60s)
     interval: 30s
     # max number of failed metric checks before rollback
     threshold: 10
     # precentage before complete rollout
-    maxWeight: 70
+    maxWeight: 50
     # 10% steps
     stepWeight: 10
     # promotion increment step (default 100)
@@ -51,13 +49,13 @@ spec:
 #        cmd: ["-c", "while true; do locust --host http://34.159.153.79/ -f /config/locustfile.py --clients 5 --hatch-rate 5 --num-request 100 --no-web; done"]
 
     metrics:
-#      - name: request-success-rate
-#        templateRef:
-#          name: request-success-rate
-#          namespace: istio-system
-#        interval: 1m
-#        thresholdRange:
-#          min: 90
+ #     - name: request-success-rate
+ #      templateRef:
+ #         name: request-success-rate
+ #         namespace: istio-system
+ #       interval: 1m
+ #       thresholdRange:
+ #         min: 90
       - name: request-duration
         templateRef:
           name: request-duration

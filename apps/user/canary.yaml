@@ -1,14 +1,14 @@
 apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
-  name: carts
+  name: user
   namespace: sock-shop
 spec:
   # deployment reference
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: carts
+    name: user
   # the maximum time in seconds for the canary deployment
   # to make progress before it is rollback (default 600s)
   progressDeadlineSeconds: 600
@@ -16,14 +16,12 @@ spec:
   autoscalerRef:
     apiVersion: autoscaling/v2beta2
     kind: HorizontalPodAutoscaler
-    name: carts
+    name: user
   service:
     # container port
     port: 80
-    trafficPolicy:
-      tls:
-        # use ISTIO_MUTUAL when mTLS is enabled
-        mode: DISABLE
+    gateways:
+      - istio-system/public-gateway
   analysis:
     # schedule interval (default 60s)
     interval: 30s

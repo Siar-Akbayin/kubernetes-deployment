@@ -1,14 +1,14 @@
 apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
-  name: carts
+  name: queue-master
   namespace: sock-shop
 spec:
   # deployment reference
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: carts
+    name: queue-master
   # the maximum time in seconds for the canary deployment
   # to make progress before it is rollback (default 600s)
   progressDeadlineSeconds: 600
@@ -16,21 +16,19 @@ spec:
   autoscalerRef:
     apiVersion: autoscaling/v2beta2
     kind: HorizontalPodAutoscaler
-    name: carts
+    name: queue-master
   service:
     # container port
     port: 80
-    trafficPolicy:
-      tls:
-        # use ISTIO_MUTUAL when mTLS is enabled
-        mode: DISABLE
+    gateways:
+      - istio-system/public-gateway
   analysis:
     # schedule interval (default 60s)
     interval: 30s
     # max number of failed metric checks before rollback
     threshold: 10
     # precentage before complete rollout
-    maxWeight: 70
+    maxWeight: 50
     # 10% steps
     stepWeight: 10
     # promotion increment step (default 100)
