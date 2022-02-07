@@ -94,21 +94,21 @@ spec:
   prune: true
   targetNamespace: sock-shop
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: queue-master
-  namespace: flux-system
-spec:
-  interval: 30s
-  dependsOn:
-    - name: istio-system
-  sourceRef:
-    kind: GitRepository
-    name: kubernetes-deployment
-  path: ./apps/queue-master
-  prune: true
-  targetNamespace: sock-shop
+#apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+#kind: Kustomization
+#metadata:
+#  name: queue-master
+#  namespace: flux-system
+#spec:
+#  interval: 30s
+#  dependsOn:
+#    - name: istio-system
+#  sourceRef:
+#    kind: GitRepository
+#    name: kubernetes-deployment
+#  path: ./apps/queue-master
+#  prune: true
+#  targetNamespace: sock-shop
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
