@@ -42,4 +42,4 @@ spec:
     name: kubernetes-deployment
   path: ./istio/gateway
   prune: true
-  targetNamespace: sock-shop
+  targetNamespace: istio-system
