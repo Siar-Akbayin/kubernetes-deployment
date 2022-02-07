@@ -18,19 +18,16 @@ spec:
     kind: HorizontalPodAutoscaler
     name: frontend
   service:
-    name: frontend
     # container port
-    port: 80
-    # Istio gateways (optional)
-    targetPort: 8079
+    port: 8079
     portName: http
+    # Istio gateways (optional)
     gateways:
       - istio-system/public-gateway
     # Istio virtual service host names (optional)
     hosts:
  #     - frontend.transparent-sock-shop.de
       - "*"
-
     match:
       - uri:
           prefix: /
@@ -40,7 +37,6 @@ spec:
       tls:
         # use ISTIO_MUTUAL when mTLS is enabled
         mode: DISABLE
-
   analysis:
     # schedule interval (default 60s)
     interval: 30s
@@ -89,7 +85,7 @@ spec:
         thresholdRange:
           max: 500
         interval: 30s
-    webhooks:
+#    webhooks:
 #      - name: conformance-test
 #        type: pre-rollout
 #        timeout: 15s
@@ -97,9 +93,10 @@ spec:
 #        metadata:
 #          type: bash
 #          cmd: "curl -sd 'test' http://frontend-canary.sock-shop:8079/token | grep token"
-      - name: flagger-loadtester
+      - name: load-test
         type: rollout
         timeout: 15s
-        url: http://transparent-sock-shop.de/
+        url: http://flagger-loadtester.sock-shop/
         metadata:
-          cmd: "hey -z 1m -q 10 -c 2 -H 'Cookie: type=insider' http://transparent-sock-shop.de/"
+          type: cmd
+          cmd: "hey -z 1m -q 10 -c 2 http://frontend.sock-shop:8079/"

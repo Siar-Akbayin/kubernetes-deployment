@@ -21,7 +21,6 @@ spec:
     name: shipping
     # container port
     port: 80
-
   analysis:
     # schedule interval (default 60s)
     interval: 30s
