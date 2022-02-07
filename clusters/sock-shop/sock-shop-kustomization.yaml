@@ -4,11 +4,13 @@ metadata:
   name: kubernetes-deployment
   namespace: flux-system
 spec:
-  interval: 5h
+  interval: 30s
+  dependsOn:
+    - name: istio-system
   sourceRef:
     kind: GitRepository
     name: kubernetes-deployment
-  path: ./manifests
+  path: ./apps
   prune: true
   targetNamespace: sock-shop
 

@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: public-gateway
-  namespace: sock-shop
+  namespace: istio-system
 spec:
   selector:
     istio: ingressgateway
@@ -23,7 +23,7 @@ spec:
   hosts:
     - "grafana.transparent-sock-shop.de"
   gateways:
-    - public-gateway.sock-shop.svc.cluster.local
+    - public-gateway.istio-system.svc.cluster.local
 
   http:
     - route:
@@ -40,7 +40,7 @@ spec:
   hosts:
     - "kiali.transparent-sock-shop.de"
   gateways:
-    - public-gateway.sock-shop.svc.cluster.local
+    - public-gateway.istio-system.svc.cluster.local
 
   http:
     - route:

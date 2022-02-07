@@ -25,7 +25,7 @@ spec:
     targetPort: 8079
     portName: http
     gateways:
-      - public-gateway.sock-shop.svc.cluster.local
+      - public-gateway.istio-system.svc.cluster.local
     # Istio virtual service host names (optional)
     hosts:
  #     - frontend.transparent-sock-shop.de
