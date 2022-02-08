@@ -10,5 +10,15 @@ spec:
     name: '*'
   - kind: GitRepository
     name: '*'
+  - kind: imagerepository
+    name: "*"
+  - kind: imagepolicy
+    name: "*"
+  - kind: receiver
+    name: "*"
+  - kind: provider
+    name: "*"
+  - kind: alert
+    name: "*"
   providerRef:
     name: notification-provider
