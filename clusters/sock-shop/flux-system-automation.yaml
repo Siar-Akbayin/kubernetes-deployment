@@ -21,6 +21,6 @@ spec:
     kind: GitRepository
     name: flux-system
   update:
-    path: ./apps/front-end/app/deployment.yaml
+    path: ./cluster/my-cluster/sock-shop
     strategy: Setters
 

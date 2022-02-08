@@ -4,3 +4,6 @@ resources:
   - canary.yaml
   - deployment.yaml
   - hpa.yaml
+images:
+  - name: europe-west3-docker.pkg.dev/cnpe-blue/sockshop/front-end:1.0.1
+    newTag: 1.0.1 # {"$imagepolicy": "flux-system:frontend"}
