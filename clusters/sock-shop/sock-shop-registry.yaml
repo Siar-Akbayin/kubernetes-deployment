@@ -6,7 +6,7 @@ metadata:
 spec:
   secretRef:
     name: gcr-key-new-new
-  image: europe-west3-docker.pkg.dev/cnpe-blue/sockshop/front-end:latest
+  image: europe-west3-docker.pkg.dev/cnpe-blue/sockshop/front-end
   interval: 1m0s
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
