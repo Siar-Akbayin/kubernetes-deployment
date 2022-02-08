@@ -5,22 +5,19 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
-  gitRepository:
+  sourceRef:
+    kind: GitRepository
     name: flux-bot
-    nameSpace: flux-system
-  update:
-    imagePolicy:
-      name: frontend
-      namespace: flux-system
-  commit:
-    author:
-      email: fluxcdbot@users.noreply.github.com
-      name: fluxcdbot
-    messageTemplate: '{{range .Updated.Images}}{{println .}}{{end}}'
+    namespace: flux-system
+  git:
+    commit:
+      author:
+        email: fluxcdbot@users.noreply.github.com
+        name: fluxcdbot
+      messageTemplate: '{{range .Updated.Images}}{{println .}}{{end}}'
+    push:
+      branch: master
   interval: 1m0s
-#  sourceRef:
-#    kind: GitRepository
-#    name: flux-bot
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
@@ -29,7 +26,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 30s
-  url: git@github.com:TUB-CNPE-TB/kubernetes-deployment.git
+  url: https://github.com:TUB-CNPE-TB/kubernetes-deployment
   secretRef:
     name: kubernetes-deployment-token
   ref:
