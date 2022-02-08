@@ -136,5 +136,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: kubernetes-deployment
-  path: ./cluster/my-cluster/sock-shop
+  path: ./cluster/sock-shop
   prune: true
