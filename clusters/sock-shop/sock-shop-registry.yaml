@@ -4,6 +4,19 @@ metadata:
   name: frontend
   namespace: flux-system
 spec:
+  secretRef:
+    name: gcr-json-key created
   image: europe-west3-docker.pkg.dev/cnpe-blue/sockshop/front-end
   interval: 1m0s
 ---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: frontend
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: frontend
+  policy:
+    semver:
+      range: 1.0.x
