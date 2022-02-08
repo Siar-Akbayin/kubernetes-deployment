@@ -14,14 +14,6 @@ spec:
     name: "*"
   - kind: ImagePolicy
     name: "*"
-  - kind: Receiver
-    name: "*"
-  - kind: Provider
-    name: "*"
-  - kind: Alert
-    name: "*"
-  - kind: Service
-    name: "*"
   - kind: ImageUpdateAutomation
     name: "*"
   providerRef:
