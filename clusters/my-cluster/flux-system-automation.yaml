@@ -26,7 +26,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 30s
-  url: https://github.com:TUB-CNPE-TB/kubernetes-deployment
+  url: https://github.com/TUB-CNPE-TB/kubernetes-deployment
   secretRef:
     name: kubernetes-deployment-token
   ref:
