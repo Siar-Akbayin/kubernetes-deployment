@@ -125,3 +125,16 @@ spec:
   path: ./apps/catalogue
   prune: true
   targetNamespace: sock-shop
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: flux
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: kubernetes-deployment
+  path: ./cluster/my-cluster/sock-shop
+  prune: true
