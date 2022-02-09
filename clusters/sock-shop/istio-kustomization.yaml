@@ -4,6 +4,7 @@ metadata:
   name: istio-operator
   namespace: flux-system
 spec:
+  timeout: 1h
   interval: 30m0s
   sourceRef:
     kind: GitRepository
