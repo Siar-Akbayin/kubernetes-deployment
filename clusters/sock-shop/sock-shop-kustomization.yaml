@@ -12,7 +12,6 @@ spec:
     name: kubernetes-deployment
   path: ./manifests
   prune: true
-  targetNamespace: sock-shop
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -20,7 +19,7 @@ metadata:
   name: frontend
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 1m0s
 #  dependsOn:
 #    - name: istio-system
   sourceRef:
@@ -28,7 +27,6 @@ spec:
     name: kubernetes-deployment
   path: ./apps/front-end/app
   prune: true
-  targetNamespace: sock-shop
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -44,7 +42,6 @@ spec:
     name: kubernetes-deployment
   path: ./apps/front-end/loadtest
   prune: true
-  targetNamespace: sock-shop
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -60,7 +57,6 @@ spec:
     name: kubernetes-deployment
   path: ./apps/orders
   prune: true
-  targetNamespace: sock-shop
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -76,7 +72,6 @@ spec:
     name: kubernetes-deployment
   path: ./apps/payment
   prune: true
-  targetNamespace: sock-shop
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -92,7 +87,6 @@ spec:
     name: kubernetes-deployment
   path: ./apps/shipping
   prune: true
-  targetNamespace: sock-shop
 ---
 #apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 #kind: Kustomization
@@ -108,7 +102,6 @@ spec:
 #    name: kubernetes-deployment
 #  path: ./apps/queue-master
 #  prune: true
-#  targetNamespace: sock-shop
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -124,4 +117,3 @@ spec:
     name: kubernetes-deployment
   path: ./apps/catalogue
   prune: true
-  targetNamespace: sock-shop
