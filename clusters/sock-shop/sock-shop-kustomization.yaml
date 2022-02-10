@@ -4,7 +4,7 @@ metadata:
   name: sock-shop-manifests
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 1m0s
 #  dependsOn:
 #    - name: istio-system
   sourceRef:
@@ -34,7 +34,7 @@ metadata:
   name: frontend-loadtest
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 1m0s
 #  dependsOn:
 #    - name: istio-system
   sourceRef:
@@ -49,7 +49,7 @@ metadata:
   name: orders
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 1m0s
 #  dependsOn:
 #    - name: istio-system
   sourceRef:
@@ -64,7 +64,7 @@ metadata:
   name: payment
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 1m0s
 #  dependsOn:
 #    - name: istio-system
   sourceRef:
@@ -79,7 +79,7 @@ metadata:
   name: shipping
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 1m0s
 #  dependsOn:
 #    - name: istio-system
   sourceRef:
@@ -109,7 +109,7 @@ metadata:
   name: catalogue
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 1m0s
 #  dependsOn:
 #    - name: istio-system
   sourceRef:
