@@ -5,8 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-#  dependsOn:
-#    - name: istio-system
+  dependsOn:
+    - name: istio-system
   sourceRef:
     kind: GitRepository
     name: kubernetes-deployment
@@ -20,8 +20,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-#  dependsOn:
-#    - name: istio-system
+  dependsOn:
+    - name: istio-system
   sourceRef:
     kind: GitRepository
     name: kubernetes-deployment
@@ -35,8 +35,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-#  dependsOn:
-#    - name: istio-system
+  dependsOn:
+    - name: istio-system
   sourceRef:
     kind: GitRepository
     name: kubernetes-deployment
@@ -50,8 +50,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-#  dependsOn:
-#    - name: istio-system
+  dependsOn:
+    - name: istio-system
   sourceRef:
     kind: GitRepository
     name: kubernetes-deployment
@@ -65,8 +65,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-#  dependsOn:
-#    - name: istio-system
+  dependsOn:
+    - name: istio-system
   sourceRef:
     kind: GitRepository
     name: kubernetes-deployment
@@ -80,8 +80,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-#  dependsOn:
-#    - name: istio-system
+  dependsOn:
+    - name: istio-system
   sourceRef:
     kind: GitRepository
     name: kubernetes-deployment
@@ -110,8 +110,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-#  dependsOn:
-#    - name: istio-system
+  dependsOn:
+    - name: istio-system
   sourceRef:
     kind: GitRepository
     name: kubernetes-deployment
