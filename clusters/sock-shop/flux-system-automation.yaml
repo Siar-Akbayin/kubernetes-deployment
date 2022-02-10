@@ -29,10 +29,8 @@ spec:
   url: https://github.com/TUB-CNPE-TB/kubernetes-deployment
   ref:
     branch: master
-  verify:
-    mode: head
-    secretRef:
-      name: github-credentials
+  secretRef:
+    name: github-credentials
 ---
 
 
