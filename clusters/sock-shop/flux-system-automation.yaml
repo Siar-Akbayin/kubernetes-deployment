@@ -17,7 +17,7 @@ spec:
       messageTemplate: '{{range .Updated.Images}}{{println .}}{{end}}'
     push:
       branch: master
-  interval: 10m
+  interval: 1m
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
@@ -25,7 +25,7 @@ metadata:
   name: flux-bot
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 1m
   url: https://github.com/TUB-CNPE-TB/kubernetes-deployment
   ref:
     branch: master

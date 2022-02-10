@@ -23,7 +23,7 @@ spec:
     provider: sops
     secretRef:
       name: sops-gpg
-  interval: 10m0s
+  interval: 1m0s
   path: ./clusters
   prune: true
   sourceRef:
