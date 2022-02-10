@@ -12,7 +12,7 @@ spec:
   path: ./istio/operator
   prune: true
   validation: client
-    healthChecks:
+  healthChecks:
     - apiVersion: apps/v1
       kind: Deployment
       name: istio-operator
