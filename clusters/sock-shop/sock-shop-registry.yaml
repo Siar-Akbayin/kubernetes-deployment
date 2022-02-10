@@ -7,7 +7,7 @@ spec:
   secretRef:
     name: gcr-json-key
   image: europe-west3-docker.pkg.dev/cnpe-blue/sockshop/front-end
-  interval: 1m0s
+  interval: 1h
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy

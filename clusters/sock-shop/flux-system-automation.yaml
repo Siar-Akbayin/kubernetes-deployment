@@ -27,10 +27,13 @@ metadata:
 spec:
   interval: 10m
   url: https://github.com/TUB-CNPE-TB/kubernetes-deployment
-  secretRef:
-    name: sops-gpg
   ref:
     branch: master
+  verify:
+    mode: head
+    secretRef:
+      name: github-credentials
+---
 
 
 
