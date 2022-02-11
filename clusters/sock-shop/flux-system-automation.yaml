@@ -19,18 +19,18 @@ spec:
       branch: master
   interval: 1m
 ---
-#apiVersion: source.toolkit.fluxcd.io/v1beta1
-#kind: GitRepository
-#metadata:
-#  name: flux-bot
-#  namespace: flux-system
-#spec:
-#  interval: 1m
-#  url: https://github.com/TUB-CNPE-TB/kubernetes-deployment
-#  ref:
-#    branch: master
-#  secretRef:
-#    name: github-credentials
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: flux-bot
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://github.com/TUB-CNPE-TB/kubernetes-deployment
+  ref:
+    branch: master
+  secretRef:
+    name: github-credentials
 ---
 
 
