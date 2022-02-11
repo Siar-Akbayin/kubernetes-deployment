@@ -20,7 +20,7 @@ spec:
       containers:
       - name: orders
 
-        image: europe-west3-docker.pkg.dev/cnpe-blue/sockshop/orders:1.0.1
+        image: europe-west3-docker.pkg.dev/cnpe-blue/sockshop/orders:latest
 
         env:
          - name: JAVA_OPTS
