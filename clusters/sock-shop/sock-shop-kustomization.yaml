@@ -1,7 +1,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: sock-shop-manifests
+  name: sock-shop
   namespace: flux-system
 spec:
   interval: 1m0s
@@ -11,117 +11,133 @@ spec:
   sourceRef:
     kind: GitRepository
     name: kubernetes-deployment
-  path: ./manifests
+  path: ./apps
   prune: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: frontend
-  namespace: flux-system
-spec:
-  interval: 1m0s
-  dependsOn:
-    - name: istio-system
-      namespace: flux-system
-  sourceRef:
-    kind: GitRepository
-    name: kubernetes-deployment
-  path: ./apps/front-end/app
-  prune: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: frontend-loadtest
-  namespace: flux-system
-spec:
-  interval: 1m0s
-  dependsOn:
-    - name: istio-system
-      namespace: flux-system
-  sourceRef:
-    kind: GitRepository
-    name: kubernetes-deployment
-  path: ./apps/front-end/loadtest
-  prune: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: orders
-  namespace: flux-system
-spec:
-  interval: 1m0s
-  dependsOn:
-    - name: istio-system
-      namespace: flux-system
-  sourceRef:
-    kind: GitRepository
-    name: kubernetes-deployment
-  path: ./apps/orders
-  prune: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: payment
-  namespace: flux-system
-spec:
-  interval: 1m0s
-  dependsOn:
-    - name: istio-system
-      namespace: flux-system
-  sourceRef:
-    kind: GitRepository
-    name: kubernetes-deployment
-  path: ./apps/payment
-  prune: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: shipping
-  namespace: flux-system
-spec:
-  interval: 1m0s
-  dependsOn:
-    - name: istio-system
-      namespace: flux-system
-  sourceRef:
-    kind: GitRepository
-    name: kubernetes-deployment
-  path: ./apps/shipping
-  prune: true
----
+  validation: client
 #apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 #kind: Kustomization
 #metadata:
-#  name: queue-master
+#  name: sock-shop-manifests
 #  namespace: flux-system
 #spec:
-#  interval: 30s
-#  dependsOn:
-#    - name: istio-system
-#       namespace: flux-system
-#  sourceRef:
-#    kind: GitRepository
-#    name: kubernetes-deployment
-#  path: ./apps/queue-master
-#  prune: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: catalogue
-  namespace: flux-system
-spec:
-  interval: 1m0s
+#  interval: 1m0s
 #  dependsOn:
 #    - name: istio-system
 #      namespace: flux-system
-  sourceRef:
-    kind: GitRepository
-    name: kubernetes-deployment
-  path: ./apps/catalogue
-  prune: true
+#  sourceRef:
+#    kind: GitRepository
+#    name: kubernetes-deployment
+#  path: ./manifests
+#  prune: true
+#---
+#apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+#kind: Kustomization
+#metadata:
+#  name: frontend
+#  namespace: flux-system
+#spec:
+#  interval: 1m0s
+#  dependsOn:
+#    - name: istio-system
+#      namespace: flux-system
+#  sourceRef:
+#    kind: GitRepository
+#    name: kubernetes-deployment
+#  path: ./apps/front-end/app
+#  prune: true
+#---
+#apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+#kind: Kustomization
+#metadata:
+#  name: frontend-loadtest
+#  namespace: flux-system
+#spec:
+#  interval: 1m0s
+#  dependsOn:
+#    - name: istio-system
+#      namespace: flux-system
+#  sourceRef:
+#    kind: GitRepository
+#    name: kubernetes-deployment
+#  path: ./apps/front-end/loadtest
+#  prune: true
+#---
+#apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+#kind: Kustomization
+#metadata:
+#  name: orders
+#  namespace: flux-system
+#spec:
+#  interval: 1m0s
+#  dependsOn:
+#    - name: istio-system
+#      namespace: flux-system
+#  sourceRef:
+#    kind: GitRepository
+#    name: kubernetes-deployment
+#  path: ./apps/orders
+#  prune: true
+#---
+#apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+#kind: Kustomization
+#metadata:
+#  name: payment
+#  namespace: flux-system
+#spec:
+#  interval: 1m0s
+#  dependsOn:
+#    - name: istio-system
+#      namespace: flux-system
+#  sourceRef:
+#    kind: GitRepository
+#    name: kubernetes-deployment
+#  path: ./apps/payment
+#  prune: true
+#---
+#apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+#kind: Kustomization
+#metadata:
+#  name: shipping
+#  namespace: flux-system
+#spec:
+#  interval: 1m0s
+#  dependsOn:
+#    - name: istio-system
+#      namespace: flux-system
+#  sourceRef:
+#    kind: GitRepository
+#    name: kubernetes-deployment
+#  path: ./apps/shipping
+#  prune: true
+#---
+##apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+##kind: Kustomization
+##metadata:
+##  name: queue-master
+##  namespace: flux-system
+##spec:
+##  interval: 30s
+##  dependsOn:
+##    - name: istio-system
+##       namespace: flux-system
+##  sourceRef:
+##    kind: GitRepository
+##    name: kubernetes-deployment
+##  path: ./apps/queue-master
+##  prune: true
+#---
+#apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+#kind: Kustomization
+#metadata:
+#  name: catalogue
+#  namespace: flux-system
+#spec:
+#  interval: 1m0s
+##  dependsOn:
+##    - name: istio-system
+##      namespace: flux-system
+#  sourceRef:
+#    kind: GitRepository
+#    name: kubernetes-deployment
+#  path: ./apps/catalogue
+#  prune: true
