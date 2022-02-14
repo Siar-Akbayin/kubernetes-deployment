@@ -35,6 +35,13 @@ spec:
     stepWeight: 10
     # promotion increment step (default 100)
     stepWeightPromotion: 100
+
+    alerts:
+      - name: "on-call Discord"
+        severity: info
+        providerRef:
+          name: on-call
+          namespace: flux-system
     #Built in Flagger metrics
 #    metrics:
 #      - name: request-success-rate

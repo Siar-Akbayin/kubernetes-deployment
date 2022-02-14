@@ -37,6 +37,13 @@ spec:
     stepWeight: 10
     # promotion increment step (default 100)
     stepWeightPromotion: 100
+
+    alerts:
+      - name: "on-call Discord"
+        severity: info
+        providerRef:
+          name: on-call
+          namespace: flux-system
     #Built in Flagger metrics
 #    webhooks:
       #gate waits for status code 200 from an url. If it gets 403, rollout
