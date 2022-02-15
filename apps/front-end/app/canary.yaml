@@ -63,7 +63,7 @@ spec:
       - name: request-success-rate
         interval: 1m
         thresholdRange:
-          min: 90
+          min: 80
       - name: request-duration
         interval: 1m
         thresholdRange:
@@ -73,7 +73,7 @@ spec:
           name: error-rate
           namespace: istio-system
         thresholdRange:
-          max: 1
+          max: 10
         interval: 30s
       - name: latency
         templateRef:
