@@ -4,7 +4,7 @@ metadata:
   name: frontend
   namespace: sock-shop
 spec:
-  host: frontend
+  host: frontend.sock-shop.svc.cluster.local
   trafficPolicy:
     tls:
       mode: ISTIO_MUTUAL
