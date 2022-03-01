@@ -4,3 +4,4 @@ resources:
   - deployment.yaml
   - canary.yaml
   - hpa.yaml
+  - destinationrule.yaml

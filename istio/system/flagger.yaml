@@ -1,3 +1,4 @@
+# source: https://github.com/stefanprodan/gitops-istio/blob/main/istio/system/flagger.yaml
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
